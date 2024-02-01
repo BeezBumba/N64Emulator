@@ -55,7 +55,7 @@
         
         .nav-tabs .nav-item.show .nav-link,
         .nav-tabs .nav-link.active {
-            color: #007bff;
+            color: #ff3333;
         }
     </style>
     <style> body { background-color: black; } </style>
@@ -75,7 +75,7 @@
                 <button id="btnUploadRom" class="btn btn-primary mt-4" onclick="myApp.uploadBrowse()"
                         rv-disabled="data.moduleInitializing">Browse</button>
                 <button type="button" class="btn btn-primary mt-4" id="btnRemap" onclick="myApp.showRemapModal()">
-                    Remap Buttons
+                    Settings
                 </button>
                 <span rv-if="data.showLogin">
                     <button class="btn btn-primary mt-4" rv-if="data.loggedIn | ev '==false'"
@@ -320,7 +320,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Remap Buttons</h5>
+                    <h5 class="modal-title">Settings</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
