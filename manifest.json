@@ -1,6 +1,6 @@
 {
-  "short_name": "N64WASM",
-  "name": "N64WASM",
+  "short_name": "N64EMU",
+  "name": "Nintendo 64",
   "icons": [
     {
       "src": "icons/favicon.png",
@@ -20,7 +20,7 @@
     }
   ],
   "start_url": ".",
-  "display": "fullscreen",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000"
 }
