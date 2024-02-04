@@ -10,7 +10,7 @@ class MyClass {
         this.allSaveStates = [];
         this.loginModalOpened = false;
         this.loadSavestateAfterBoot = false;
-        this.canvasSize = 640;
+        this.canvasSize = 720;
         this.eepData = null;
         this.sraData = null;
         this.flaData = null;
