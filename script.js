@@ -117,6 +117,11 @@ class MyClass {
         this.createDB();
         this.retrieveSettings();
 
+        window.addEventListener("resize", function() {
+            // RESIZING THE IFRAME WHEN THE SCREEN SIZE CHANGES
+            myClass.resizeCanvas();
+        });
+
         $('#topPanel').show();
         $('#lblErrorOuter').show();
         
@@ -215,7 +220,8 @@ class MyClass {
             Module.callMain(['custom.v64']);
             this.findInDatabase();
             this.configureEmulator();
-            $('#canvasDiv').show();
+            $('#canvas').show();
+            $('#maindiv').hide();
             this.rivetsData.beforeEmulatorStarted = false;
             this.showToast = Module.cwrap('neil_toast_message', null, ['string']);
             this.toggleFPSModule = Module.cwrap('toggleFPS', null, ['number']);
@@ -604,7 +610,10 @@ class MyClass {
     }
 
     resizeCanvas() {
-        $('#canvas').width(this.canvasSize);
+        let width = document.documentElement.clientWidth; //window.innerWidth;
+        let height = document.documentElement.clientHeight;// window.innerHeight;
+        $('#canvas').width(width);
+        $('#canvas').height(height);
     }
 
     zoomOut() {
@@ -1129,10 +1138,10 @@ class MyClass {
         if (this.rivetsData.password)
             this.loginSilent();
 
-        if (this.rivetsData.mouseMode)
-        {
-            document.getElementById('canvasDiv').addEventListener("click", this.canvasClick.bind(this));
-        }
+        // if (this.rivetsData.mouseMode)
+        // {
+        //     document.getElementById('canvasDiv').addEventListener("click", this.canvasClick.bind(this));
+        // }
     }
 
     canvasClick(){
@@ -1575,4 +1584,3 @@ window["Module"] = {
 var script2 = document.createElement('script');
 script2.src = 'input_controller.js';
 document.getElementsByTagName('head')[0].appendChild(script2);
-
