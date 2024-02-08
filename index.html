@@ -18,11 +18,15 @@
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.0/nipplejs.min.js"></script>
     <style>
-        #maindiv {
+        /* #maindiv {
             width: 100%;
             max-width: 100%;
             padding-left: 0px;
-        }
+        } */
+
+
+        html,body{padding:0;margin:0}
+        canvas{width:100%;height:100%;position:fixed;left:0;right:0;bottom:0;top:0;z-index:-1}
 
         input[type="file"] {
             display: none;
@@ -62,6 +66,8 @@
 </head>
 
 <body>
+    <canvas id="canvas" style="width: 640px;display: none;"></canvas>
+    
     <div id="maindiv" class="container text-center">
         <div id="topPanel" style="display: none;">
 
@@ -198,11 +204,7 @@
             </div>
         </div>
 
-        <div id="mydiv" class="mt-4"></div>
-        <!-- ID has to be canvas it's hardcoded in the EM generated .js -->
-        <div id="canvasDiv" style="display: none;">
-            <canvas id="canvas" style="width: 640px;"></canvas>
-        </div>
+         <div id="mydiv" class="mt-4"></div>  
 
         <div id="bottomPanel" rv-hide="data.beforeEmulatorStarted">
             <!-- <div>{ data.audioSkipCount}</div> -->
@@ -957,7 +959,7 @@
 
     <script src="settings.js"></script>
     <script src="romlist.js"></script>
-    <script src="register_sw.js"></script>
+   <!-- <script src="register_sw.js"></script> -->
     <script src="script.js"></script>
 </body>
 
