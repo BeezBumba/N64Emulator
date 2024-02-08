@@ -1138,10 +1138,10 @@ class MyClass {
         if (this.rivetsData.password)
             this.loginSilent();
 
-         // if (this.rivetsData.mouseMode)
-        // {
-        //     document.getElementById('canvasDiv').addEventListener("click", this.canvasClick.bind(this));
-        // }
+        if (this.rivetsData.mouseMode)
+         {
+             document.getElementById('canvasDiv').addEventListener("click", this.canvasClick.bind(this));
+         }
 
     }
 
