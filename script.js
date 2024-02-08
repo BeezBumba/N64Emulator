@@ -117,7 +117,7 @@ class MyClass {
         this.createDB();
         this.retrieveSettings();
 
-           window.addEventListener("resize", function() {
+        window.addEventListener("resize", function() {
             // RESIZING THE IFRAME WHEN THE SCREEN SIZE CHANGES
             myClass.resizeCanvas();
         });
