@@ -215,8 +215,7 @@ class MyClass {
             Module.callMain(['custom.v64']);
             this.findInDatabase();
             this.configureEmulator();
-            $('#canvas').show();
-            $('#maindiv').hide();
+            $('#canvasDiv').show();
             this.rivetsData.beforeEmulatorStarted = false;
             this.showToast = Module.cwrap('neil_toast_message', null, ['string']);
             this.toggleFPSModule = Module.cwrap('toggleFPS', null, ['number']);
@@ -605,10 +604,7 @@ class MyClass {
     }
 
     resizeCanvas() {
-        let width = document.documentElement.clientWidth; //window.innerWidth;
-        let height = document.documentElement.clientHeight;// window.innerHeight;
-        $('#canvas').width(width);
-        $('#canvas').height(height);  
+        $('#canvas').width(this.canvasSize);
     }
 
     zoomOut() {
@@ -1134,10 +1130,9 @@ class MyClass {
             this.loginSilent();
 
         if (this.rivetsData.mouseMode)
-         {
-             document.getElementById('canvasDiv').addEventListener("click", this.canvasClick.bind(this));
-         }
-
+        {
+            document.getElementById('canvasDiv').addEventListener("click", this.canvasClick.bind(this));
+        }
     }
 
     canvasClick(){
