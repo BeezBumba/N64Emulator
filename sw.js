@@ -1,6 +1,6 @@
 // sw.js
 
-const staticCacheName = 'N64EMU'; // Update the cache name if needed
+
 
 const filesToCache = [
     'icons',
@@ -16,7 +16,7 @@ const filesToCache = [
     'settings.js',
     // Add more files here as necessary
 ];
-
+const staticCacheName = 'N64EMU'; // Update the cache name if needed
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(staticCacheName)
@@ -38,8 +38,6 @@ self.addEventListener('fetch', (event) => {
                 return fetch(event.request);
             })
             .catch((error) => {
-                // Handle fetch errors (e.g., no network connection)
-                console.error('Fetch error:', error);
             })
     );
 });
