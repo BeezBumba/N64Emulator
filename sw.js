@@ -1,18 +1,18 @@
 const filesToCache = [
-	"Nintendo64.htm",
-	"Nintendo64.json",
-	"Nintendo64.png",
-	"Nintendo64Emulator.htm",
-	"Nintendo64Emulator.js",
-	"Nintendo64Emulator.wasm",
-	"Nintendo64FavIcon_16x16.png",
-	"Nintendo64FavIcon_192x192.png",
-	"Nintendo64FavIcon_512x512.png",
-	"Nintendo64Menu.htm",
-	"Nintendo64Share.png"
+	"icons",
+	"assets.zip",
+	"github_logo.png",
+	"index.html",
+	"input_controller.js",
+	"manifest.json",
+	"n64wasm.js",
+	"n64wasm.wasm",
+	"romlist.js",
+	"script.js",
+	"settings.js"
 ];
 
-const staticCacheName = "nintendo64-v1";
+const staticCacheName = "N64EMU";
 
 self.addEventListener("install", event => {
 	event.waitUntil(
