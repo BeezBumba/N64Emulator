@@ -12,7 +12,7 @@ const filesToCache = [
 	"settings.js"
 ];
 
-const staticCacheName = "N64EMU";
+const staticCacheName = "N64WASM";
 
 self.addEventListener("install", event => {
 	event.waitUntil(
