@@ -1,7 +1,30 @@
 const KEY = 'N64EMU';
 
+// Define a list of files to cache
+const filesToCache = [
+	"icons",
+	"assets.zip",
+	"github_logo.png",
+    "index.html",
+    "input_controller.js",
+    "manifest.json",
+	"n64wasm.js",
+	"n64wasm.wasm",
+	"romlist.js",
+    "script.js",
+	"settings"
+];
+
+// Add an event listener for the install event
 self.addEventListener('install', (event) => {
-    event.waitUntil(self.skipWaiting());
+    // Perform the caching operation
+    event.waitUntil(
+        caches.open(KEY)
+            .then( (cache) => {
+                // Add the files to the cache
+                return cache.addAll(filesToCache);
+            })
+    );
 });
 
 self.addEventListener('message', (event) => {
@@ -9,33 +32,30 @@ self.addEventListener('message', (event) => {
         event.waitUntil(
             caches.open(KEY)
                 .then( (cache) => {
-                    // cache multiple URLs at once
                     return cache.addAll(event.data.payload);
                 })
         );
     }
 });
 
-self.addEventListener("fetch", (event) => {
-  // use event.request to access the request object
-  event.respondWith(
-    // use cache.match() to check if a request is already cached
-    caches.open(KEY).then(cache => cache.match(event.request))
-      .then(cachedResponse => {
-        if (cachedResponse) {
-          // return the cached response if found
-          console.log(`[Service Worker] Serving resource from cache: ${event.request.url}`);
-          return cachedResponse;
+self.addEventListener("fetch", (e) => {
+  e.respondWith(
+    (async () => {
+      try {
+       console.log(`[Service Worker] Attempting live fetch: ${e.request.url}`);
+       const response = await fetch(e.request);
+       const cache = await caches.open(KEY);
+       console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+       cache.put(e.request, response.clone());
+       return response;
+      } catch (err) {
+        console.log(`[Service Worker] Attempting to serve resource from cache: ${e.request.url}`);
+        const r = await caches.match(e.request);
+        if (r) {
+          return r;
         }
-        // otherwise, fetch the resource from the network
-        console.log(`[Service Worker] Attempting live fetch: ${event.request.url}`);
-        return fetch(event.request).then(networkResponse => {
-          // cache the network response for future use
-          console.log(`[Service Worker] Caching new resource: ${event.request.url}`);
-          cache.put(event.request, networkResponse.clone());
-          // return the network response
-          return networkResponse;
-        });
-      })
+      }
+    })()
   );
 });
+
