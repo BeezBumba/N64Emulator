@@ -5,14 +5,14 @@ const filesToCache = [
 	"icons",
 	"assets.zip",
 	"github_logo.png",
-    "index.html",
-    "input_controller.js",
-    "manifest.json",
+    	"index.html",
+    	"input_controller.js",
+    	"manifest.json",
 	"n64wasm.js",
 	"n64wasm.wasm",
 	"romlist.js",
-    "script.js",
-	"settings"
+    	"script.js",
+	"settings.js"
 ];
 
 // Add an event listener for the install event
