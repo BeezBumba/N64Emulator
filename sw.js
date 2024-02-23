@@ -1,23 +1,37 @@
-const KEY = 'N64WASM';
+const filesToCache = [
+	"icons",
+	"assets.zip",
+	"github_logo.png",
+	"index.html",
+	"input_controller.js",
+	"manifest.json",
+	"n64wasm.js",
+	"n64wasm.wasm",
+	"romlist.js",
+	"script.js",
+	"settings.js"
+];
 
-self.addEventListener('install', (event) => {
-    event.waitUntil(self.skipWaiting());
+const staticCacheName = "N64EMU";
+
+self.addEventListener("install", event => {
+	event.waitUntil(
+		caches.open(staticCacheName)
+		.then(cache => {
+			return cache.addAll(filesToCache);
+		})
+	);
 });
 
-self.addEventListener('message', (event) => {
-    if (event.data.type === 'CACHE_URLS') {
-        event.waitUntil(
-            caches.open(KEY)
-                .then( (cache) => {
-                    return cache.addAll(event.data.payload);
-                })
-        );
-    }
+self.addEventListener("fetch", event => {
+	event.respondWith(
+		caches.match(event.request)
+		.then(response => {
+			if (response) {
+				return response;
+			}
+			return fetch(event.request)
+		}).catch(error => {
+		})
+	);
 });
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    self.clients.claim()
-  );
-});
-
