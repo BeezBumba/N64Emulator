@@ -9,6 +9,7 @@ const filesToCache = [
 	"manifest.json",
 	"n64wasm.js",
 	"n64wasm.wasm",
+	"register_sw.js",
 	"romlist.js",
 	"script.js",
 	"settings.js"
