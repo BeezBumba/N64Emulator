@@ -1,5 +1,7 @@
 const filesToCache = [
-	"icons",
+	"icons/favicon.png",
+	"icons/icon.png",
+	"icons/icon192.png",
 	"assets.zip",
 	"github_logo.png",
 	"index.html",
