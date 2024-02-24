@@ -20,13 +20,7 @@ self.addEventListener("install", event => {
 	event.waitUntil(
 		caches.open(staticCacheName)
 		.then(cache => {
-			// loop through the files and add them individually
-			for (let file of filesToCache) {
-				cache.add(file).catch(error => {
-					// log the file that failed
-					console.error(`Failed to cache ${file}: ${error}`);
-				});
-			}
+			return cache.addAll(filesToCache);
 		})
 	);
 });
