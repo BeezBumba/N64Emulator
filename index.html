@@ -956,20 +956,8 @@
             </div>
         </div>
     </div>
-<script>
-        if ("serviceWorker" in navigator)
-		{
-		navigator.serviceWorker.register("sw.js").then(function(registration)
-			{
-			// Registration successful
-			//console.log("ServiceWorker registration successful with scope: " + registration.scope);
-			}).catch(function(err)
-			{
-			// Registration failed
-			//console.log("ServiceWorker registration failed: " + err);
-			});
-                }
-</script>
+	
+    <script src="register_sw.js"></script>
     <script src="settings.js"></script>
     <script src="romlist.js"></script>
     <script src="script.js"></script>
