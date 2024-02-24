@@ -1,10 +1,10 @@
 const filesToCache = [
+	"index.html",
 	"icons/favicon.png",
 	"icons/icon.png",
 	"icons/icon192.png",
 	"assets.zip",
 	"github_logo.png",
-	"index.html",
 	"input_controller.js",
 	"manifest.json",
 	"n64wasm.js",
