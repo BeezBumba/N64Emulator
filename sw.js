@@ -18,18 +18,14 @@ const filesToCache = [
 const staticCacheName = "N64EMU";
 
 self.addEventListener("install", event => {
-	event.waitUntil(
-		caches.open(staticCacheName)
-		.then(cache => {
+	event.waitUntil(caches.open(staticCacheName).then(cache => {
 			return cache.addAll(filesToCache);
 		})
 	);
 });
 
 self.addEventListener("fetch", event => {
-	event.respondWith(
-		caches.match(event.request)
-		.then(response => {
+	event.respondWith(caches.match(event.request).then(response => {
 			if (response) {
 				return response;
 			}
