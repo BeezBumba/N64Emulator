@@ -183,7 +183,7 @@ class MyClass {
     }
 
     detectMobile(){
-        if (navigator.userAgent.toLocaleLowerCase().includes('iphone'))
+        if (navigator.userAgent.toLocaleLowerCase().includes('iphone') || navigator.userAgent.toLocaleLowerCase().includes('ipad'))
         {
             this.iosMode = true;
             try {
@@ -193,9 +193,10 @@ class MyClass {
                 this.iosVersion = parseInt(iosVersion);
             } catch (err) { }
     
-            if (this.iosVersion > 15) {
-                this.rivetsData.iosShowWarning = true;
-            }
+            //don't need this anymore
+            // if (this.iosVersion > 15) {
+            //     this.rivetsData.iosShowWarning = true;
+            // }
         }
         if (window.innerWidth < 600 || this.iosMode)
             this.mobileMode = true;
@@ -501,6 +502,9 @@ class MyClass {
         //mouse mode
         if (this.rivetsData.mouseMode) configString += "1" + "\r\n"; else configString += "0" + "\r\n";
 
+         //use vbo
+        if (this.iosMode) configString += "1" + "\r\n"; else configString += "0" + "\r\n";
+        
         FS.writeFile('config.txt',configString);
 
         //write cheats
