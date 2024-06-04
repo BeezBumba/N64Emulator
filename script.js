@@ -189,7 +189,7 @@ class MyClass {
         let isIpad = navigator.userAgent.toLocaleLowerCase().includes('ipad');
         if (isIphone || isIpad)
         {
-            this.iosMode = false;
+            this.iosMode = true;
             try {
                 let iosVersion = navigator.userAgent.substring(navigator.userAgent.indexOf("iPhone OS ") + 10);
                 iosVersion = iosVersion.substring(0, iosVersion.indexOf(' '));
