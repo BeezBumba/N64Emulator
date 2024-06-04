@@ -511,7 +511,7 @@ class MyClass {
         if (this.rivetsData.mouseMode) configString += "1" + "\r\n"; else configString += "0" + "\r\n";
 
          //use vbo
-        if (this.iosMode) configString += "1" + "\r\n"; else configString += "0" + "\r\n";
+        if (this.iosMode) configString += "1" + "\r\n"; else configString += "1" + "\r\n";
         
         FS.writeFile('config.txt',configString);
 
