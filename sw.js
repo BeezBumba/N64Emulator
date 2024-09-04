@@ -8,7 +8,7 @@ self.addEventListener('message', (event) => {
     if (event.data.type === 'CACHE_URLS') {
         event.waitUntil(
             caches.open(KEY)
-                .then( (cache) => {
+                .then((cache) => {
                     return cache.addAll(event.data.payload);
                 })
         );
