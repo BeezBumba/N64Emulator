@@ -1252,6 +1252,7 @@ class MyClass {
         this.setFromLocalStorage('n64wasm-settingMobile','settingMobile');
         this.setFromLocalStorage('n64wasm-mouseMode','mouseMode');
         this.setFromLocalStorage('n64wasm-forceAngry','forceAngry');
+        this.setFromLocalStorage('n64wasm-ricePlugin','ricePlugin');
 
     }
 
@@ -1265,7 +1266,8 @@ class MyClass {
         this.rivetsData.invert4P = this.rivetsData.invert4PTemp;
         this.rivetsData.disableAudioSync = this.rivetsData.disableAudioSyncTemp;
         this.rivetsData.settingMobile = this.rivetsData.settingMobileTemp;
-        this.rivetsData.forceAngry = this.rivetsData.forceAngryTemp;
+        this.rivetsData.forceAngry = this.rivetsData.pluginTemp == 'angry';
+        this.rivetsData.ricePlugin = this.rivetsData.pluginTemp == 'rice';
 
         this.setToLocalStorage('n64wasm-showfps','showFPS');
         this.setToLocalStorage('n64wasm-disableaudiosyncnew','disableAudioSync');
@@ -1276,6 +1278,7 @@ class MyClass {
         this.setToLocalStorage('n64wasm-invert4P','invert4P');
         this.setToLocalStorage('n64wasm-settingMobile','settingMobile');
         this.setToLocalStorage('n64wasm-forceAngry','forceAngry');
+        this.setToLocalStorage('n64wasm-ricePlugin','ricePlugin');
         
     }
 
@@ -1294,7 +1297,9 @@ class MyClass {
         this.rivetsData.invert4PTemp = this.rivetsData.invert4P;
         this.rivetsData.disableAudioSyncTemp = this.rivetsData.disableAudioSync;
         this.rivetsData.settingMobileTemp = this.rivetsData.settingMobile;
-        this.rivetsData.forceAngryTemp = this.rivetsData.forceAngry;
+        this.rivetsData.pluginTemp = 'glide';
+        if (this.rivetsData.forceAngry) this.rivetsData.pluginTemp = 'angry';
+        if (this.rivetsData.ricePlugin) this.rivetsData.pluginTemp = 'rice';
 
         //start input loop
         if (!this.rivetsData.inputLoopStarted)
@@ -1419,7 +1424,7 @@ class MyClass {
         this.rivetsData.invert4PTemp = false;
         this.rivetsData.disableAudioSyncTemp = true;
         this.rivetsData.settingMobileTemp = 'Auto';
-        this.rivetsData.forceAngryTemp = false;
+        this.rivetsData.pluginTemp = 'glide';
     }
 
     remapPressed() {
