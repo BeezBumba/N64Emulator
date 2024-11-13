@@ -60,6 +60,7 @@ class MyClass {
             invert4P: false,
             disableAudioSync: true,
             forceAngry: false,
+            ricePlugin: false,
             remapPlayer1: true,
             remapOptions: false,
             remapGameshark: false,
@@ -512,6 +513,9 @@ class MyClass {
 
          //use vbo
         if (this.iosMode) configString += "1" + "\r\n"; else configString += "1" + "\r\n";
+
+        //rice plugin
+        if (this.rivetsData.ricePlugin) configString += "1" + "\r\n"; else configString += "0" + "\r\n";
         
         FS.writeFile('config.txt',configString);
 
