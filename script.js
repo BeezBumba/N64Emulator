@@ -1584,6 +1584,31 @@ class MyClass {
     localCallback(){
     }
     
+
+    startRumble(controllerNum) {
+        try
+        {
+            let gamepad = navigator.getGamepads()[controllerNum];
+            gamepad.vibrationActuator.playEffect("dual-rumble", {
+                startDelay: 0,
+                duration: 2000,
+                weakMagnitude: 1.0,
+                strongMagnitude: 1.0,
+            });
+        }catch(e){}
+    }
+    stopRumble(controllerNum) {
+        try
+        {
+            let gamepad = navigator.getGamepads()[controllerNum];
+            gamepad.vibrationActuator.playEffect("dual-rumble", {
+                startDelay: 0,
+                duration: 2000,
+                weakMagnitude: 0,
+                strongMagnitude: 0,
+            });
+        }catch(e){}
+    }
     
 }
 let myClass = new MyClass();
